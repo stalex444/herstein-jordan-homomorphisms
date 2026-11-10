@@ -464,7 +464,9 @@ review:
     examples, and found the prior formalization recorded above. An
     AI-assisted adversarial review (five lenses, each finding re-checked at
     source) was applied to the assembled package on 2026-11-10 and its
-    findings were applied. Not peer-reviewed.
+    findings were applied. The author reviewed the five compared
+    statements against their informal descriptions on 2026-11-10. Not
+    peer-reviewed.
 
 alignment:
   namespace: "JordanPrime"
