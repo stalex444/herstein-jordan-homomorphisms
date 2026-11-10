@@ -1,0 +1,13 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "JordanPrime.jordan_onto_prime",
+    "JordanPrime.twoIdentity_into_domain",
+    "JordanPrime.onto_needed",
+    "JordanPrime.prime_needed",
+    "JordanPrime.two_needed"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

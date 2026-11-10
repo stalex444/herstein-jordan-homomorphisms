@@ -1,0 +1,75 @@
+herstein-jordan -- kernel build record, 2026-11-10
+Toolchain: leanprover/lean4:v4.35.0-rc2
+  lean --version: Lean (version 4.35.0-rc2, arm64-apple-darwin24.6.0, commit 11acb17ec6b07a8f9e9173e6845197929540936b, Release)
+Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55
+  lake-manifest: copied from the author's entry at the same pin (package name herstein_jordan)
+  .lake/packages: symlink to the built packages of that entry (same pin); not part of the repository
+
+Build: lake build (defaultTargets HersteinJordan, HersteinJordanExamples, Challenge, Solution) -> Build
+  completed successfully (8938 jobs), exit 0, 2026-11-10. Only warnings: the 5 'declaration uses sorry'
+  warnings of Challenge.lean (the compared placeholders, lines 101, 112, 120, 132, 145). No warning in
+  HersteinJordan, HersteinJordanExamples or Solution.
+  Token counts (whole-word grep, per file):
+    Challenge.lean               sorry=5 admit=0 native_decide=0 axiom=0
+    Solution.lean                sorry=0 admit=0 native_decide=0 axiom=0
+    HersteinJordan.lean          sorry=0 admit=0 native_decide=0 axiom=0
+    HersteinJordanExamples.lean  sorry=0 admit=0 native_decide=0 axiom=0
+  All four library modules use the module system (module / public import Mathlib / @[expose] public
+  section); Challenge.lean imports Mathlib only; Solution.lean imports Mathlib, HersteinJordan,
+  HersteinJordanExamples. Axioms.lean (not a build target) also begins with `module`.
+
+#print axioms (lake env lean Axioms.lean, Axioms.lean importing Solution), 2026-11-10:
+  'JordanPrime.jordan_onto_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'JordanPrime.twoIdentity_into_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'JordanPrime.onto_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'JordanPrime.prime_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'JordanPrime.two_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'HersteinJordan.mul_or_antimul_of_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'HersteinJordan.mul_or_antimul_of_prime_of_twoIdentity' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'HersteinJordan.mul_or_antimul_of_noZeroDivisors' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'HersteinJordan.defect_sandwich' depends on axioms: [propext]
+  'HersteinJordan.matrix_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'HersteinJordan.mul_or_antimul_onto_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Statement identity, Challenge vs Solution (5 theorems, no definitions)
+  Scripted comparison of the five docstring-plus-signature blocks: identical, in the same order, which
+    is the comparator order.
+  Count gate: the Challenge docstring says "compares exactly these five statements" and enumerates 1-5;
+    comparator.json has 5 theorem_names in that order; Challenge.lean has 5 theorem declarations.
+
+Comparator
+  lake comparator --inadvisably-no-sandbox (toolchain bin with nanoda_bin on PATH), from the package root,
+    2026-11-10, after the last edit to Challenge.lean: "Exporting #[... JordanPrime.jordan_onto_prime,
+    JordanPrime.twoIdentity_into_domain, JordanPrime.onto_needed, JordanPrime.prime_needed,
+    JordanPrime.two_needed, ...] from Challenge / Building Solution / Build completed successfully
+    (8934 jobs) / Exporting #[the same list] from Solution / nanoda kernel accepts the solution / Lean
+    default kernel accepts the solution / Your solution is okay!", exit 0.
+  Not run: the registry's own submission workflow (needs the public commit); no bubblewrap sandbox on
+    macOS (hence --inadvisably-no-sandbox).
+
+Metadata
+  formalization.yaml validates against the v0.4 schema (0 errors).
+  Provenance: the registry contract (scripts.submission_contract, local PalomarSubmission clone of
+    2026-09-08, older than the live pipeline) loads the metadata and derives result_origin source-based;
+    the author's editorial check derives the same and finds it honest for every compared statement.
+
+Review history
+  2026-11-10: a five-lens AI-assisted adversarial review, each finding re-checked at source, was applied
+    to the first assembly of this package. Changes made on its findings: the failure of the dropped
+    hypothesis was added as a clause to statements 3-5; a false sentence about Kadison's theorem was
+    removed from the Challenge docstring; the papers of Herstein, Smiley and Jacobson-Rickart, first
+    recorded as not consulted, were read in Internet Archive copies and the source account rewritten from
+    them; the record of contact with the prior formalization was made exact; the prior-formalization
+    search was widened and its list rewritten.
+
+Files (sha256)
+  87dc5032ff42d9629cccfee6d3daa6651e63dd33d8f94af2eac19de869c3bd00  Challenge.lean
+  14b7c8bf85d65a5ecee483f54d1dadbd1345db7d4b4bf47d552d4976cfc954c0  Solution.lean
+  bfe2d758c1c98bddf304a5c855248cb972011b0326e4c30527e7751db94ca63f  HersteinJordan.lean
+  19f8f8fa5dabc61cbc480bd566bcb6ed731816e721dc8983637619d7c8887ade  HersteinJordanExamples.lean
+  9bc479bb253e7413c30e64d790da854db4eddae63f86633d088391915da4b10c  Axioms.lean
+  12c7527a08e77afb7101ba39b2f795bdc1946ef3f2d9baa01e909a8052d86545  comparator.json
+  a86d9f7b0583becdff5013f878e0ef1e4c967ac2aae8a89d70ce477829495a70  lakefile.toml
+  8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a  lean-toolchain
+  a1020bad118f42769171ae01d0becc6c6808823e3cdf6163a7dfeb9955576fb9  lake-manifest.json
+  (README.md, formalization.yaml, LICENSE, .github/ are hashed at commit time; see git.)
