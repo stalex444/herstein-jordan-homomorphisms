@@ -15,8 +15,8 @@ the complex-linear case of statement 1 already exists; see "Prior formalization"
 
 ## The compared statements (namespace `JordanPrime`)
 
-No definition is added; every hypothesis is written out. Rings are `NonUnitalRing`. `S` is *prime*
-when `∀ x y, (∀ z, x * z * y = 0) → x = 0 ∨ y = 0`, and has *no 2-torsion* when
+The statements add no definition; onto is `Function.Surjective`. Rings are `NonUnitalRing`. `S` is
+*prime* when `∀ x y, (∀ z, x * z * y = 0) → x = 0 ∨ y = 0`, and has *no 2-torsion* when
 `∀ x, x + x = 0 → x = 0`.
 
 | # | name | statement |
@@ -68,18 +68,39 @@ and Rickart's identity (7)) follow from them; the absence of zero divisors gives
   which every commutator squares to zero. It follows Beidar, Brešar and Chebotar, *Jordan
   superhomomorphisms*, Comm. Algebra 31 (2003), 633–644, Proposition 3.1 (after Brešar, J.
   Algebra 127 (1989)). They write for algebras over a ring containing `1/2` and remark that their
-  arguments also work in rings of characteristic not 2; here the maps are additive maps of rings
-  and the last step cancels a 2 where they pass from `x = -x` to `x = 0`. No novelty is claimed for the ring-level
-  form, which is the setting of Smiley's theorem.
-- **The proof of statement 2** is Jacobson and Rickart's.
+  arguments also work in rings of characteristic not 2; here the maps are additive maps of rings,
+  and a 2 is cancelled in step 1 and again in step 4, where they pass from `x = -x` to `x = 0`. No
+  novelty is claimed for the ring-level form, which is the setting of Smiley's theorem.
+- **The proof of statement 2** is Jacobson and Rickart's: their identity (7) and their Lemma 1.
+  The lemma is proved here by the covering argument of step 5; their own proof of it is arranged
+  differently.
 - **The examples.** `A ↦ (A, Aᵀ)` is in Brešar, *Jordan homomorphisms revisited*, Math. Proc.
   Cambridge Philos. Soc. 144 (2008), 317–328, §2; `(A₁, A₂) ↦ (A₁, A₂ᵀ)` is in Havlicek,
   arXiv:2004.00886v2, footnote 17; the degeneracy of the identity in characteristic 2 is in
-  Havlicek's footnote 15. Statements 4 and 5 are `2 × 2` integer and `𝔽₂` instances of these;
-  statement 3 is the first map for `2 × 2` integer matrices, composed with the block-diagonal
-  embedding into the `4 × 4` matrices so that the target is prime.
+  Havlicek's footnote 15. Brešar and Havlicek state the two matrix maps over a field. Statement 4
+  is the second map for `2 × 2` integer matrices; statement 5 is an instance of the degeneracy,
+  `𝔽₂ × 𝔽₂ → 𝔽₂`; statement 3 is the first map for `2 × 2` integer matrices, composed with the
+  block-diagonal embedding into the `4 × 4` matrices so that the target is prime.
 - **History.** Havlicek §4.2, for the sequence Hua, Jacobson–Rickart, Herstein, Yamaguti, Smiley,
   Baxter–Martindale, Brešar; Brešar (2008), introduction.
+- **Current literature.** The subject is Jordan maps of associative rings (MSC 16W10, 16N60 and
+  17C50, three of the four codes printed on Brešar's 2025 paper below). M. Brešar and E. Zelmanov,
+  *Jordan homomorphisms: a survey*, Serdica Math. J. 51 (2025), no. 3–4, 203–230 (read as
+  arXiv:2510.16876v1), states the theorems of statements 1 and 2 for algebras over a field of
+  characteristic not 2 and sketches their proofs: Theorem 5.3 (Jacobson–Rickart, into a domain)
+  and Theorem 5.6 (Herstein, onto a prime algebra, with the remark that Smiley removed the
+  hypothesis on characteristic 3). M. Brešar, *Splittable Jordan homomorphisms and commutator
+  ideals*, J. Algebra 671 (2025), 159–180 (read as arXiv:2410.07052v1), lists Herstein's theorem
+  among the classical results, says that these results and their generalizations are still
+  relevant because Jordan homomorphisms occur in various problems, preserver problems in
+  particular, and notes that its Proposition 3.4 (attributed there to Brešar 1989) covers
+  Herstein's theorem. Beidar, Brešar and Chebotar (2003) extend the theorem to prime
+  superalgebras. In operator algebras, the OpenAI file named under "Prior formalization"
+  describes itself as the algebraic argument recalled in §5 of the preprint *Universal strong
+  Kadison–Kastler stability* (OpenAI, dated September 23, 2026, under `preprints/` in the same
+  repository); Lemma 5.8 of the preprint states the conclusion for a surjective linear Jordan
+  homomorphism between unital complex algebras whose target is a factor von Neumann algebra, and
+  the preprint cites Herstein (1956) for it.
 
 ## Prior formalization
 
@@ -98,11 +119,12 @@ before the file was found. An AI-assisted scope review then found the file, read
 compiled a scratch check modelled on it; that scratch is not in this repository and was not
 opened when the Lean here was written. Before writing the Lean, the drafting session read the
 scope review's report and lines 1–40 and 150–182 of the file (its header, definitions, first
-lemma and main theorem with its proof); the rest was read after the build. Both developments
+lemma and main theorem with all but the last line of its proof); the rest was read after the
+build. Both developments
 follow the same classical argument. No code was copied. `formalization.yaml` records this in
 full, and records the relationship as "other", not "independent".
 
-Two separate Lean developments are adjacent.
+Two adjacent Lean developments are recorded here.
 [`abderrahim-lectures/braided-sym-deriv`](https://github.com/abderrahim-lectures/braided-sym-deriv)
 formalizes Jordan *derivations*. The registry entry
 PALOMAR-2026-10-28-000031 (Colbrook and Stepaniants, spectral isometries of C*-algebras) proves

@@ -21,8 +21,11 @@ project:
     without 2-torsion (witness a -> diag(a, a^T)); (4) on pairs of 2x2
     integer matrices, onto, the target not prime (witness (a, b) ->
     (a, b^T)); (5) from F_2 x F_2 onto F_2, a prime ring with 2-torsion
-    (witness (x, y) -> x + y). No definition is added: every hypothesis is
-    written out as a universally quantified statement. Statements 1 and 2
+    (witness (x, y) -> x + y). The compared statements add no definition:
+    the identities on the map and the conditions on the target ring are
+    written out as universally quantified statements, the maps are
+    Mathlib's AddMonoidHom, and onto is Function.Surjective. Statements 1
+    and 2
     formalize theorems of the 1950s and statements 3-5 are standard
     examples; nothing here is a new theorem. The proof of (1) follows the
     argument written out by Beidar, Bresar and Chebotar (2003, Proposition
@@ -63,7 +66,7 @@ sources:
     # Theorem H, p. 340; text extraction of the scan) in the Internet Archive
     # copy of the publisher's PDF,
     # web.archive.org/web/20250709135714/https://www.ams.org/journals/tran/1956-081-02/S0002-9947-1956-0076751-6/S0002-9947-1956-0076751-6.pdf
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.1090/S0002-9947-1956-0076751-6"
     relationship: "formalizes"
     note: >-
@@ -88,7 +91,7 @@ sources:
     # pp. 426-429; text extraction of the scan) in the Internet Archive copy
     # of the publisher's PDF,
     # web.archive.org/web/20231117102820/https://www.ams.org/journals/tran/1957-084-02/S0002-9947-1957-0083484-X/S0002-9947-1957-0083484-X.pdf
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.1090/S0002-9947-1957-0083484-X"
     relationship: "formalizes"
     note: >-
@@ -117,7 +120,7 @@ sources:
     # 2026-11-10 in the author's copy at
     # https://users.fmf.uni-lj.si/bresar/documents/Jordansuperhom.pdf
     # (introduction and Proposition 3.1 with its proof).
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.1081/AGB-120017336"
     relationship: "adapts"
     note: >-
@@ -128,8 +131,9 @@ sources:
       authors describe as following Bresar 1989 and for whose key identity
       they cite Smiley's p. 427. Adapted here in two respects: additive maps
       of rings in place of module homomorphisms of algebras, and "no
-      2-torsion in the target" in place of 1/2 in the scalars (the last step
-      cancels a 2 where the paper passes from x = -x to x = 0). The authors remark that
+      2-torsion in the target" in place of 1/2 in the scalars (a 2 is
+      cancelled in deriving the square and triple identities, and again
+      where the paper passes from x = -x to x = 0). The authors remark that
       their arguments also work in rings of characteristic not 2, and their
       algebras are not assumed to have an identity; no novelty is claimed
       for the ring-level form, which is the setting of Smiley's theorem.
@@ -145,7 +149,7 @@ sources:
     # extraction of the scan) in the Internet Archive copy of the
     # publisher's PDF,
     # web.archive.org/web/20250418165034/https://www.ams.org/journals/tran/1950-069-00/S0002-9947-1950-0038335-X/S0002-9947-1950-0038335-X.pdf
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.1090/S0002-9947-1950-0038335-X"
     relationship: "formalizes"
     note: >-
@@ -173,7 +177,7 @@ sources:
     # 2026-11-10 (introduction, the opening of section 2, the remark on
     # Kadison and Stormer in section 5, reference list) in the author's copy
     # at https://users.fmf.uni-lj.si/bresar/documents/Jordanhomrev.pdf
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.1017/S0305004107000825"
     relationship: "adapts"
     note: >-
@@ -184,21 +188,21 @@ sources:
       matrices so that the target is prime. Also read for its introduction,
       the source of the remarks on Kadison used in this entry.
     license: "unknown"
-    author_endorsement: "n/a"
+    author_endorsement: "not-contacted"
   - title: "Germán Ancochea's work on projectivities, harmonicity preservers and semi-homomorphisms"
     authors:
       - "H. Havlicek"
     id: "arXiv:2004.00886v2"
     # READ 2026-11-10 (version 2: section 3 with footnotes 15 and 17, and
     # section 4.2).
-    type: "preprint"
+    type: "paper"
     location: "https://arxiv.org/abs/2004.00886"
     relationship: "adapts"
     note: >-
       Scoped to statements 4 and 5. Footnote 17 gives the map (A_1, A_2) ->
       (A_1, A_2^T) of M_n(F) + M_n(F) onto itself, n >= 2, F a commutative
       field, as a map that is neither a homomorphism nor an
-      anti-homomorphism; statement 4 is the 2x2 integer instance. Footnote
+      anti-homomorphism; statement 4 is that map for 2x2 integer matrices. Footnote
       15 notes that an additive automorphism of a commutative field of
       characteristic two satisfies the identity of statement 1 trivially;
       statement 5 is an instance of that degeneracy, F_2 x F_2 -> F_2,
@@ -209,7 +213,7 @@ sources:
       definition, which Havlicek calls Kaplansky's), Baxter-Martindale and
       Bresar (semiprime rings).
     license: "unknown"
-    author_endorsement: "n/a"
+    author_endorsement: "not-contacted"
   - title: "Jordan mappings of semiprime rings"
     authors:
       - "M. Brešar"
@@ -217,24 +221,24 @@ sources:
     # Crossref-verified 2026-11-10: DOI 10.1016/0021-8693(89)90285-8. NOT
     # READ. Cited by Beidar-Bresar-Chebotar as the argument their
     # Proposition 3.1 follows.
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.1016/0021-8693(89)90285-8"
     relationship: "background"
     note: >-
       Origin of the proof route as reported by Beidar-Bresar-Chebotar; the
       semiprime generalization it proves is not formalized here.
     license: "unknown"
-    author_endorsement: "n/a"
+    author_endorsement: "not-contacted"
   - title: "Jordan homomorphisms of semiprime rings"
     authors:
       - "W. E. Baxter"
       - "W. S. Martindale 3rd"
     id: "Journal of Algebra 56 (1979), 457-471"
     # Crossref-verified 2026-11-10: DOI 10.1016/0021-8693(79)90349-1. NOT READ.
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.1016/0021-8693(79)90349-1"
     relationship: "background"
-    note: "Named only as a generalization (semiprime targets) that is not formalized here."
+    note: "Named only as a generalization (semiprime targets) that is not formalized here. Not read; the generalization is as reported in Havlicek's section 4.2."
     license: "unknown"
     author_endorsement: "n/a"
   - title: "On an algebraic generalization of the quantum mechanical formalism"
@@ -245,10 +249,10 @@ sources:
     id: "Annals of Mathematics 35 (1934), 29-64"
     # Crossref-verified 2026-11-10: DOI 10.2307/1968117. NOT READ; standard
     # reference for the symmetrized product on observables.
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.2307/1968117"
     relationship: "background"
-    note: "The cited application only: observables with the symmetrized product. Not used in any proof."
+    note: "The cited application only: observables with the symmetrized product. Not used in any proof. Not read; cited as the standard reference."
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Isometries of operator algebras"
@@ -257,7 +261,7 @@ sources:
     id: "Annals of Mathematics 54 (1951), 325-338"
     # Crossref-verified 2026-11-10: DOI 10.2307/1969534. NOT READ; cited as
     # Bresar's introduction reports it.
-    type: "article"
+    type: "paper"
     location: "https://doi.org/10.2307/1969534"
     relationship: "background"
     note: >-
@@ -268,12 +272,63 @@ sources:
       result from statement 1 and is not formalized here.
     license: "unknown"
     author_endorsement: "n/a"
+  - title: "Jordan homomorphisms: A survey"
+    authors:
+      - "M. Brešar"
+      - "E. Zelmanov"
+    id: "Serdica Mathematical Journal 51 (2025), no. 3-4, 203-230"
+    # Crossref and publisher page checked 2026-11-10: DOI
+    # 10.55630/serdica.2025.51.203-230 (the publisher's record misprints
+    # the title). READ 2026-11-10 as arXiv:2510.16876v1 (the opening of the
+    # introduction and section 5); the journal version was not read.
+    type: "paper"
+    location: "https://doi.org/10.55630/serdica.2025.51.203-230"
+    relationship: "background"
+    note: >-
+      Current survey of the subject. In arXiv:2510.16876v1, for algebras
+      over a field of characteristic not 2, Theorem 5.3 is the
+      Jacobson-Rickart theorem for maps into a domain and Theorem 5.6 is
+      Herstein's theorem, with the remark that Smiley removed the hypothesis
+      on characteristic 3; the proofs of both are sketched there. Read as
+      the arXiv version, not the journal version. Not used in any proof
+      here.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Splittable Jordan homomorphisms and commutator ideals"
+    authors:
+      - "M. Brešar"
+    id: "Journal of Algebra 671 (2025), 159-180"
+    # Crossref-verified 2026-11-10: DOI 10.1016/j.jalgebra.2025.03.007. READ
+    # 2026-11-10 as arXiv:2410.07052v1 (the first two pages of the
+    # introduction; Proposition 3.4 and the remark after it); the journal
+    # version was not read.
+    type: "paper"
+    location: "https://doi.org/10.1016/j.jalgebra.2025.03.007"
+    relationship: "background"
+    note: >-
+      Recent paper on the subject. In arXiv:2410.07052v1 the introduction
+      lists Herstein's theorem among the classical results and says that
+      these results and their generalizations are still relevant because
+      Jordan homomorphisms occur in various problems, preserver problems in
+      particular. After Proposition 3.4 (a surjective Jordan homomorphism
+      onto a 2-torsion-free semiprime ring is splittable; attributed there
+      to Bresar 1989) it notes that the proposition covers Herstein's
+      theorem. Read as the arXiv version, not the journal version. Not used
+      in any proof here.
+    license: "unknown"
+    author_endorsement: "not-contacted"
 
 related_formalizations:
-  - id: "https://github.com/openai/math (lean/OAI/Analysis/KadisonKastler/Jordan.lean, theorem OAI.KadisonKastler.PreservesJordan.multiplicative_or_antimultiplicative; read on 2026-11-10 at commit 4eaee87548250b2682affda7d05d947c05554bae, file sha256 f7ba1d007eb1b6e887c61a1d0eb589bf9595162568adc58a8c98ff0f73e7a6a9; the file's only commit is dated 2026-10-06)"
+  - id: "https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/lean/OAI/Analysis/KadisonKastler/Jordan.lean"
     relationship: "other"
     note: >-
-      PRIOR FORMALIZATION OF A SPECIAL CASE OF STATEMENT 1. That theorem,
+      PRIOR FORMALIZATION OF A SPECIAL CASE OF STATEMENT 1. The file is
+      lean/OAI/Analysis/KadisonKastler/Jordan.lean in github.com/openai/math,
+      read on 2026-11-10 at commit 4eaee87548250b2682affda7d05d947c05554bae
+      (file sha256
+      f7ba1d007eb1b6e887c61a1d0eb589bf9595162568adc58a8c98ff0f73e7a6a9; the
+      file's only commit is dated 2026-10-06). Its theorem
+      OAI.KadisonKastler.PreservesJordan.multiplicative_or_antimultiplicative,
       described there as "Herstein's orientation theorem in the complex
       prime-target case", proves the conclusion of statement 1 for a
       surjective complex-linear map between unital complex algebras whose
@@ -303,7 +358,8 @@ related_formalizations:
       read the scope review's report and lines 1-40 and 150-182 of the file
       (the header, the two definitions, the halving lemma, the statement of
       the squares lemma, the end of a private definition, and the main
-      theorem with its proof). The rest of the file was read after the
+      theorem with all but the last line of its proof, which ends at line
+      183). The rest of the file was read after the
       build, for this note. Both developments follow the same classical
       argument (squares, triple product, linearized triple product, defect
       relation, covering). The Lean here differs in the two-identity
@@ -312,10 +368,12 @@ related_formalizations:
       omega = 0 there), the covering lemma and the tactics. No code was
       copied. The relationship is recorded as "other" and not as
       "independent" because of that contact.
-  - id: "https://github.com/abderrahim-lectures/braided-sym-deriv (Lean 4; read on 2026-11-10 at commit b14553ed8bde9173783266047bca7dd5a79bdba8, dated 2026-11-04)"
+  - id: "https://github.com/abderrahim-lectures/braided-sym-deriv/tree/b14553ed8bde9173783266047bca7dd5a79bdba8"
     relationship: "other"
     note: >-
-      ADJACENT, NOT THIS THEOREM. Formalizes Jordan derivations (Bresar 1988
+      ADJACENT, NOT THIS THEOREM. A Lean 4 development, read on 2026-11-10
+      at commit b14553ed8bde9173783266047bca7dd5a79bdba8 (dated 2026-11-04).
+      It formalizes Jordan derivations (Bresar 1988
       Theorem 1; Herstein 1957, "Jordan derivations of prime rings"; Cusack
       1975), not Jordan homomorphisms. Overlaps: it defines prime, semiprime
       and 2-torsion-free rings in the same universally quantified form used
@@ -323,20 +381,23 @@ related_formalizations:
       semiprime relative of the last step of statement 1 (from tau x omega +
       omega x tau = 0 for all x, the library here derives tau x omega y tau
       = 0 and applies primeness twice). No statement or module is shared.
-  - id: "https://github.com/MColbrook/Proof-of-the-spectral-isometry-conjecture-for-C-star-algebras (registry record PALOMAR-2026-10-28-000031; read on 2026-11-10)"
+  - id: "https://github.com/MColbrook/Proof-of-the-spectral-isometry-conjecture-for-C-star-algebras"
     relationship: "other"
     note: >-
-      ADJACENT, NOT THIS THEOREM. Proves that unital surjective spectral
+      ADJACENT, NOT THIS THEOREM. Registry record PALOMAR-2026-10-28-000031,
+      read on 2026-11-10. It proves that unital surjective spectral
       isometries of C*-algebras are Jordan isomorphisms (complex-linear
       bijections preserving squares), and, in its library, that
       complex-linear Jordan derivations of semiprime complex algebras are
       derivations. It contains no statement that a Jordan homomorphism is a
       homomorphism or an anti-homomorphism. No statement or module is
       shared.
-  - id: "https://github.com/leanprover-community/mathlib4 (NonUnitalRing, AddMonoidHom, Matrix, Matrix.fromBlocks, Matrix.single, ZMod)"
+  - id: "https://github.com/leanprover-community/mathlib4"
     relationship: "builds-on"
     note: >-
-      The compared statements use Mathlib vocabulary only; no definition is
+      Mathlib declarations used in this repository include NonUnitalRing,
+      AddMonoidHom, Matrix, Matrix.fromBlocks, Matrix.single and ZMod. The
+      compared statements use Mathlib vocabulary only; no definition is
       added. Mathlib at the pin has no Jordan-homomorphism declaration and no
       prime-ring predicate for noncommutative rings, which is why the
       hypotheses are written out. Mathlib's Algebra/Jordan/Basic.lean
@@ -432,7 +493,8 @@ fidelity:
     2 against Jacobson-Rickart's Theorem 2 (1950, p. 482): the same
     definition (squares and aba) and conclusion; "integral domain" is
     written out as "x y = 0 implies x = 0 or y = 0" for a ring that need
-    not be commutative or have an identity; their Lemma 1 (attributed to
+    not be commutative or have an identity (the zero ring satisfies this
+    too, and there statement 2 is trivial); their Lemma 1 (attributed to
     Hua) is proved by a subgroup-covering argument, not their element
     chase. (d) A Jordan homomorphism in the sense of statement 1 into a
     ring without 2-torsion satisfies both identities of statement 2
@@ -440,9 +502,12 @@ fidelity:
     same), so the two definitions agree there. (e) Statements 3-5 are
     existence statements; each asserts the failure of one hypothesis, the
     other hypotheses, and the failure of the conclusion. The witnesses are
-    named in the Challenge docstring and defined in the library; they are
-    2x2 integer and F_2 instances of the examples in the sources named in
-    the alignment block. (f) Statement 5's map preserves squares and does
+    named in the Challenge docstring and defined in the library; they
+    adapt the examples in the sources named in the alignment block:
+    integer matrices in place of matrices over a field (statements 3 and
+    4), the block-diagonal embedding added in statement 3, and a map F_2 x
+    F_2 -> F_2 in place of an additive automorphism of a field of
+    characteristic two (statement 5). (f) Statement 5's map preserves squares and does
     not satisfy the triple identity of statement 2, so it says nothing
     about the characteristic-2 theorem for the two-identity definition. (g)
     The three papers of 1950-1957 were read in text extractions of scanned
@@ -481,7 +546,7 @@ alignment:
       module: "Solution"
       status: "proved"
       note: "An additive map preserving squares and aba into a ring without zero divisors is multiplicative or anti-multiplicative; every characteristic, no surjectivity."
-    - source: "Standard example: the map A -> (A, A^t) (Bresar 2008, section 2), composed here with the block-diagonal embedding; 2x2 integer instance"
+    - source: "Standard example: the map A -> (A, A^t) (Bresar 2008, section 2, there over a field of characteristic not 2), composed here with the block-diagonal embedding; 2x2 integer instance"
       lean: "JordanPrime.onto_needed"
       module: "Solution"
       status: "proved"

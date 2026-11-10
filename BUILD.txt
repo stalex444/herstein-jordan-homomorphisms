@@ -44,14 +44,17 @@ Comparator
     JordanPrime.two_needed, ...] from Challenge / Building Solution / Build completed successfully
     (8934 jobs) / Exporting #[the same list] from Solution / nanoda kernel accepts the solution / Lean
     default kernel accepts the solution / Your solution is okay!", exit 0.
-  Not run: the registry's own submission workflow (needs the public commit); no bubblewrap sandbox on
-    macOS (hence --inadvisably-no-sandbox).
+  Not recorded here: the registry's own submission workflow. It is dispatched on the public commit by
+    .github/workflows/palomar-preflight.yml, and its result is in that repository's Actions runs, not in
+    this file. No bubblewrap sandbox on macOS (hence --inadvisably-no-sandbox) for the local run above.
 
 Metadata
   formalization.yaml validates against the v0.4 schema (0 errors).
-  Provenance: the registry contract (scripts.submission_contract, local PalomarSubmission clone of
-    2026-09-08, older than the live pipeline) loads the metadata and derives result_origin source-based;
-    the author's editorial check derives the same and finds it honest for every compared statement.
+  Provenance: the registry contract (scripts.submission_contract at PalomarSubmission 14aa8d6b, the
+    pipeline commit the preflight workflow pins) loads the metadata and derives result_origin source-based;
+    a script of the author's, kept outside this repository (a scripted check, not a human review), derives
+    the same from the sources list and finds the comparator names, the alignment table, the Challenge
+    theorem count and the docstring's count in agreement.
 
 Review history
   2026-11-10: a five-lens AI-assisted adversarial review, each finding re-checked at source, was applied
@@ -64,6 +67,15 @@ Review history
   2026-11-10: a second, two-lens check of the rewritten text (page claims against the papers; consistency
     across the files) found no blocking defect; its wording corrections were applied, and the build, the
     axioms print, the comparator and the checks above were re-run after them.
+  2026-11-10: the author reviewed the five compared statements against their informal descriptions
+    (recorded in formalization.yaml, review.notes).
+  2026-11-10: a third AI-assisted check on the public commit, organised by the registry's published
+    review prompts (metadata, statement alignment, definitions, literature, proof account, rendering), each
+    finding re-checked at source, found no defect in the Lean or in the compared statements. Its wording
+    and metadata corrections were applied to README.md, formalization.yaml and this file only: source
+    types and related-formalization links, a paragraph on the current literature with two background
+    sources, and exact wording in the account of the examples and of where a 2 is cancelled. No Lean file
+    changed, so the build, axioms and comparator records above stand; the metadata checks were re-run.
 
 Files (sha256)
   52417eb61a28c082887c0830240b7337be74499f2528edfc64b1a3b0eb57a4e1  Challenge.lean
