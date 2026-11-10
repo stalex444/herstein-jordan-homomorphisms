@@ -7,7 +7,7 @@ public import HersteinJordanExamples
 /-!
 # Herstein's theorem: proofs of the compared statements
 
-Each of the five statements of `Challenge.lean` is proved here, with the identical statement, by
+Each of the six statements of `Challenge.lean` is proved here, with the identical statement, by
 transfer from the proof library (`HersteinJordan.lean`, `HersteinJordanExamples.lean`, namespace
 `HersteinJordan`). No definition is added.
 
@@ -26,6 +26,15 @@ transfer from the proof library (`HersteinJordan.lean`, `HersteinJordanExamples.
 * Statement 4: witness `HersteinJordan.sndTranspose`; the target is not prime by statement 1.
 * Statement 5: witness `HersteinJordan.sumMod2`; every clause is decided by `decide` on the
   finite rings `𝔽₂ × 𝔽₂` and `𝔽₂`.
+* Statement 6: `HersteinJordan.mul_or_antimul_of_prime_of_twoIdentity_anyChar` (Smiley's
+  argument). For every pair, `τ * ω = 0`, `ω * τ = 0` and `τ * x * ω + ω * x * τ = 0` for every
+  `x` in the target (`defect_mul_defect`, `defect_mul_defect_mirror`, `defect_sandwich` and
+  surjectivity); none of these uses a hypothesis on 2. If some `τ` has a nonzero square, these
+  identities at sums of pairs and primeness make every `ω` vanish
+  (`defect_eq_zero_of_sq_ne_zero`), so `φ` is anti-multiplicative; with the roles exchanged, `φ`
+  is multiplicative. Otherwise every commutator of the target squares to zero, the target is
+  commutative (`commutative_of_commutator_sq_zero`), hence has no zero divisors, and
+  `mul_or_antimul_of_noZeroDivisors` (the theorem behind statement 2) finishes.
 -/
 
 namespace JordanPrime
@@ -104,5 +113,15 @@ theorem two_needed :
   ⟨HersteinJordan.sumMod2, HersteinJordan.sumMod2_jordan, HersteinJordan.sumMod2_surjective,
     HersteinJordan.zmod2_prime, by decide, HersteinJordan.sumMod2_not_mul,
     HersteinJordan.sumMod2_not_antimul⟩
+
+/-- **6. The theorem in every characteristic (Smiley, Added in proof).** An additive map
+preserving squares and `a * b * a`, onto a prime ring, is a homomorphism or an
+anti-homomorphism. No hypothesis on 2. -/
+theorem twoIdentity_onto_prime {R S : Type*} [NonUnitalRing R] [NonUnitalRing S] (φ : R →+ S)
+    (hsq : ∀ a, φ (a * a) = φ a * φ a) (htri : ∀ a b, φ (a * b * a) = φ a * φ b * φ a)
+    (hsurj : Function.Surjective φ)
+    (hprime : ∀ x y : S, (∀ z, x * z * y = 0) → x = 0 ∨ y = 0) :
+    (∀ a b, φ (a * b) = φ a * φ b) ∨ (∀ a b, φ (a * b) = φ b * φ a) :=
+  HersteinJordan.mul_or_antimul_of_prime_of_twoIdentity_anyChar φ hsq htri hsurj hprime
 
 end JordanPrime

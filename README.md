@@ -7,9 +7,11 @@ Jordan homomorphisms. **Herstein's theorem** is the converse onto a prime ring: 
 homomorphism onto a prime ring of characteristic different from 2 is a homomorphism or an
 anti-homomorphism. This repository proves it as Smiley states it (additive maps of rings, no
 identity assumed, no 2-torsion in the target), proves the domain form of Jacobson and Rickart in
-every characteristic, and gives one example for each hypothesis showing that it cannot be dropped.
+every characteristic, gives one example for each hypothesis showing that it cannot be dropped,
+and proves Smiley's form of the theorem in every characteristic (two identities in place of the
+hypothesis on 2).
 
-Statements 1 and 2 formalize prior work (Herstein 1956 and Smiley 1957; Jacobson and Rickart
+Statements 1, 2 and 6 formalize prior work (Herstein 1956 and Smiley 1957; Jacobson and Rickart
 1950). Statements 3–5 are standard examples. Nothing here is a new theorem. A formalization of
 the complex-linear case of statement 1 already exists; see "Prior formalization" below.
 
@@ -26,6 +28,7 @@ The statements add no definition; onto is `Function.Surjective`. Rings are `NonU
 | 3 | `onto_needed` | surjectivity is needed: there is a Jordan homomorphism from `2 × 2` into `4 × 4` integer matrices (a prime ring without 2-torsion) that is not onto and is neither |
 | 4 | `prime_needed` | primeness is needed: there is a Jordan homomorphism from pairs of `2 × 2` integer matrices onto pairs of `2 × 2` integer matrices (not prime, no 2-torsion) that is neither |
 | 5 | `two_needed` | the hypothesis on 2 is needed: there is a Jordan homomorphism from `𝔽₂ × 𝔽₂` onto `𝔽₂` (prime, with 2-torsion) that is neither |
+| 6 | `twoIdentity_onto_prime` | an additive map with `φ(a²) = φ(a)²` and `φ(aba) = φ(a)φ(b)φ(a)` onto a prime ring is multiplicative or anti-multiplicative; no hypothesis on 2 (Smiley 1957, Added in proof, p. 429) |
 
 Statements 3–5 are existence statements. Each asserts that one hypothesis fails, that the others
 hold, and that the conclusion fails. The witnesses in the proofs are
@@ -53,6 +56,16 @@ For statement 2 the two identities of step 1 are the hypotheses; step 2 and `τ 
 and Rickart's identity (7)) follow from them; the absence of zero divisors gives `τ = 0` or
 `ω = 0` for each pair; step 5 (their Lemma 1, which they attribute to Hua) finishes.
 
+For statement 6 (Smiley's argument) the identities `τ ω = 0`, `ω τ = 0` and the identity of step 3
+hold for every pair, with no hypothesis on 2. Suppose some `τ` has a nonzero square, say
+`T = τ(c, d)`. In a prime ring, an element `w` with `T w = 0` and `T x w + w x T = 0` for every
+`x` is zero, because then `T² x w = 0` for every `x`. Applying the identities to `(c, d)`, to
+sums of pairs such as `(c, d + x)` and `(c + y, d + x)`, and subtracting, shows that every `ω` is
+such a `w`, so `φ` is anti-multiplicative; with `τ` and `ω` exchanged, `φ` is multiplicative.
+Otherwise every `τ` and every `ω` squares to zero, so every commutator
+`φ(a)φ(b) − φ(b)φ(a) = ω − τ` squares to zero. By Smiley's lemma a prime ring with that property
+is commutative; it then has no zero divisors, and the theorem behind statement 2 applies.
+
 ## Relation to the literature
 
 - **The statements.** Statement 1 is the Theorem of Smiley, *Jordan homomorphisms onto prime
@@ -61,7 +74,10 @@ and Rickart's identity (7)) follow from them; the absence of zero divisors gives
   Amer. Math. Soc. 81 (1956), 331–341, p. 340, is the same with characteristic 3 also excluded;
   the element-wise definition of a prime ring used here is Herstein's (p. 334). Statement 2 is
   Theorem 2 of Jacobson and Rickart, *Jordan homomorphisms of rings*, Trans. Amer. Math. Soc. 69
-  (1950), 479–502, p. 482, with their definition of a Jordan homomorphism (p. 479). These three
+  (1950), 479–502, p. 482, with their definition of a Jordan homomorphism (p. 479). Statement 6
+  is Smiley's theorem as amended in his "Added in proof" (p. 429), where the two identities
+  replace the hypothesis on 2; he keeps the Jordan identity as a hypothesis, and statement 6
+  omits it because it follows from the square identity. These three
   papers were read on 2026-11-10 in Internet Archive copies of the publisher's PDFs (text
   extractions of the scans); the pages read are listed in `formalization.yaml`.
 - **The proof of statement 1** is not Smiley's, which goes through a lemma on prime rings in
@@ -74,6 +90,11 @@ and Rickart's identity (7)) follow from them; the absence of zero divisors gives
 - **The proof of statement 2** is Jacobson and Rickart's: their identity (7) and their Lemma 1.
   The lemma is proved here by the covering argument of step 5; their own proof of it is arranged
   differently.
+- **The proof of statement 6** is Smiley's: his identity (7), his three alternatives and the
+  lemma of his §3 (a prime ring in which every commutator squares to zero is commutative), which
+  is proved in the library following his proof. His linearized identities (8)–(10) are replaced
+  by applications of (7) and `τ ω = 0` to sums of pairs. In the last alternative, where he writes
+  only that the proof is complete, the Lean uses the theorem behind statement 2.
 - **The examples.** `A ↦ (A, Aᵀ)` is in Brešar, *Jordan homomorphisms revisited*, Math. Proc.
   Cambridge Philos. Soc. 144 (2008), 317–328, §2; `(A₁, A₂) ↦ (A₁, A₂ᵀ)` is in Havlicek,
   arXiv:2004.00886v2, footnote 17; the degeneracy of the identity in characteristic 2 is in
@@ -108,11 +129,12 @@ The case of complex-linear maps between unital complex algebras is formalized in
 [`openai/math`](https://github.com/openai/math), file
 `lean/OAI/Analysis/KadisonKastler/Jordan.lean`, theorem
 `OAI.KadisonKastler.PreservesJordan.multiplicative_or_antimultiplicative` (first committed
-2026-10-06). Statement 1 contains that case and is free of three restrictions: additive maps in
-place of complex-linear ones, no identity element, and no 2-torsion in place of complex scalars.
+2026-10-06). Statements 1 and 6 contain that case. Statement 1 is free of three restrictions:
+additive maps in place of complex-linear ones, no identity element, and no 2-torsion in place of
+complex scalars; statement 6 has no hypothesis on 2 at all.
 That file also proves the complex-linear counterparts of the library lemmas for steps 1–3.
-Statements 2–5 were not found there (all files searched by name and by content at commit
-4eaee875, 2026-11-10).
+Statements 2–5 were not found there, and nothing there treats additive maps of rings or
+characteristic 2 (all files searched by name and by content at commit 4eaee875, 2026-11-10).
 
 Contact with that file. The proof plan was written from the Beidar–Brešar–Chebotar argument
 before the file was found. An AI-assisted scope review then found the file, read all of it, and
@@ -132,7 +154,7 @@ that certain maps are Jordan *isomorphisms* (square-preserving linear bijections
 derivations of semiprime complex algebras are derivations. Neither proves that a Jordan
 homomorphism is a homomorphism or an anti-homomorphism.
 
-No formalization of statement 1 for additive maps of rings, or of statements 2–5, was found on
+No formalization of statement 1 for additive maps of rings, or of statements 2–6, was found on
 2026-11-10 in: Mathlib (sources at the pin and at master 21fc68be; issue and pull-request
 search); the Lean Zulip public channels; the Lean Reservoir package index; the Palomar registry
 (search API); TauCeti and Lean Pool (sources); the repositories named above (sources); the titles
@@ -143,9 +165,6 @@ repositories were not searched. This is a dated search, not a claim of priority.
 
 ## Not formalized
 
-- The theorem in characteristic 2: Smiley's remark (Added in proof, p. 429) that the two
-  identities of statement 2 may replace the hypothesis on 2. The library's two-identity form of
-  statement 1 still assumes no 2-torsion.
 - Semiprime targets (Baxter–Martindale 1979; Brešar 1989).
 - The theorems that write a Jordan homomorphism of a matrix ring or an operator algebra as a sum
   of a homomorphism and an anti-homomorphism (Jacobson–Rickart; Kadison).
@@ -164,9 +183,9 @@ When the ring is not commutative these are exactly two products, a product and i
 
 | file | content |
 |------|---------|
-| `Challenge.lean` | the five statements, unproved; imports Mathlib only |
-| `Solution.lean` | the five statements, proved by transfer from the library |
-| `HersteinJordan.lean` | the proof library: the identities, the covering lemma, and the theorems behind statements 1 and 2 (with the two-identity form of statement 1) |
+| `Challenge.lean` | the six statements, unproved; imports Mathlib only |
+| `Solution.lean` | the six statements, proved by transfer from the library |
+| `HersteinJordan.lean` | the proof library: the identities, the covering lemma, the theorems behind statements 1, 2 and 6, and Smiley's lemma on prime rings |
 | `HersteinJordanExamples.lean` | primeness of matrix rings, a matrix corollary, the three examples |
 | `Axioms.lean` | `#print axioms` for the compared and library theorems |
 | `comparator.json` | the compared names |

@@ -2,9 +2,9 @@
 version: "v0.4"
 
 project:
-  name: "Herstein's theorem on Jordan homomorphisms onto prime rings of characteristic different from 2 (Smiley's form), with the Jacobson-Rickart domain theorem and an example for each hypothesis"
+  name: "Herstein's theorem on Jordan homomorphisms onto prime rings, in Smiley's form for characteristic different from 2 and in his form for every characteristic, with the Jacobson-Rickart domain theorem and an example for each hypothesis"
   description: >-
-    Kernel-checked proofs, in Lean 4 + Mathlib, of five statements. An
+    Kernel-checked proofs, in Lean 4 + Mathlib, of six statements. An
     additive map phi between associative rings is a Jordan homomorphism when
     phi(ab + ba) = phi(a)phi(b) + phi(b)phi(a). (1) A Jordan homomorphism onto
     a prime ring without 2-torsion is a homomorphism or an anti-homomorphism
@@ -21,21 +21,25 @@ project:
     without 2-torsion (witness a -> diag(a, a^T)); (4) on pairs of 2x2
     integer matrices, onto, the target not prime (witness (a, b) ->
     (a, b^T)); (5) from F_2 x F_2 onto F_2, a prime ring with 2-torsion
-    (witness (x, y) -> x + y). The compared statements add no definition:
+    (witness (x, y) -> x + y). (6) The theorem in every characteristic
+    (Smiley 1957, Added in proof, p. 429): an additive map with the two
+    identities of (2), onto a prime ring, is a homomorphism or an
+    anti-homomorphism, with no hypothesis on 2; it implies (1), and (5)
+    shows that the Jordan identity alone does not suffice when the ring has
+    2-torsion. The compared statements add no definition:
     the identities on the map and the conditions on the target ring are
     written out as universally quantified statements, the maps are
-    Mathlib's AddMonoidHom, and onto is Function.Surjective. Statements 1
-    and 2
-    formalize theorems of the 1950s and statements 3-5 are standard
+    Mathlib's AddMonoidHom, and onto is Function.Surjective. Statements 1,
+    2 and 6 formalize theorems of the 1950s and statements 3-5 are standard
     examples; nothing here is a new theorem. The proof of (1) follows the
     argument written out by Beidar, Bresar and Chebotar (2003, Proposition
-    3.1), not Smiley's; the proof of (2) is Jacobson and Rickart's. Not
-    formalized: Smiley's remark that the two identities of (2) may replace
-    the hypothesis on 2 in (1) (characteristic 2), and the semiprime
-    generalizations. A prior formalization of the case of complex-linear
-    maps between unital complex algebras exists in github.com/openai/math
-    and is recorded under related_formalizations; statement (1) contains
-    that case. Application (cited; no compared statement asserts it): the
+    3.1), not Smiley's; the proof of (2) is Jacobson and Rickart's; the
+    proof of (6) is Smiley's, through his lemma that a prime ring in which
+    every commutator squares to zero is commutative. Not formalized: the
+    semiprime generalizations. A prior formalization of the case of
+    complex-linear maps between unital complex algebras exists in
+    github.com/openai/math and is recorded under related_formalizations;
+    statements (1) and (6) contain that case. Application (cited; no compared statement asserts it): the
     self-adjoint elements of an algebra of observables are closed under the
     symmetrized product and not, in general, under the product; applied to
     the identity map, (1) says that on a prime ring without 2-torsion the
@@ -95,19 +99,29 @@ sources:
     location: "https://doi.org/10.1090/S0002-9947-1957-0083484-X"
     relationship: "formalizes"
     note: >-
-      Scoped to statement 1, which is the paper's Theorem (p. 428) as
-      stated: a mapping of a ring R onto a prime ring R' with (1) 2a' = 0
+      Scoped to statements 1 and 6. Statement 1 is the paper's Theorem
+      (p. 428) as stated: a mapping of a ring R onto a prime ring R' with (1) 2a' = 0
       implies a' = 0 and (2) (ab + ba)' = a'b' + b'a', (a + b)' = a' + b'
       satisfies (ab)' = a'b' for all a, b or (ab)' = b'a' for all a, b. No
       identity element and no scalars are assumed. The identity proved in
       the library as HersteinJordan.defect_sandwich is Smiley's (7), p. 427,
       and tau * omega = 0 (defect_mul_defect) is derived on p. 426. The
-      proof followed here after that identity is the one in
-      Beidar-Bresar-Chebotar, not Smiley's, which uses a lemma on prime
-      rings in which every commutator squares to zero. NOT formalized: the
-      "Added in proof" (p. 429), where hypothesis (1) is replaced by
-      (a^2)' = (a')^2 and (aba)' = a'b'a'; that is the theorem in
-      characteristic 2.
+      proof of statement 1 followed here after that identity is the one in
+      Beidar-Bresar-Chebotar, not Smiley's. Statement 6 is the theorem as
+      amended in the "Added in proof" (p. 429), where hypothesis (1) is
+      replaced by (1*): (a^2)' = (a')^2 and (aba)' = a'b'a'. Divergence:
+      Smiley keeps hypothesis (2), additivity and the Jordan identity,
+      beside (1*); statement 6 assumes additivity and (1*) only, since the
+      Jordan identity follows from the square identity
+      (HersteinJordan.map_jordan_of_sq). The proof of statement 6 is
+      Smiley's: identity (7), the three alternatives (11)-(13), and the
+      Lemma of section 3, a prime ring in which every commutator squares to
+      zero is commutative (HersteinJordan.commutative_of_commutator_sq_zero,
+      proved following the paper). His linearized identities (8)-(10) are
+      replaced by applying (7) and tau * omega = 0 to sums of pairs and
+      subtracting. In alternative (13), where the paper says only that the
+      proof is complete, the Lean concludes with the theorem behind
+      statement 2.
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Jordan superhomomorphisms"
@@ -340,7 +354,10 @@ related_formalizations:
       triple-product identities and the defect relation (with
       surjectivity); the library lemmas map_sq_of_jordan,
       map_triple_of_jordan, map_triple_lin and defect_sandwich are their
-      ring-level counterparts. Statements 2-5 (the domain form and the
+      ring-level counterparts. Statement 6 (the two-identity form onto a
+      prime ring, with no hypothesis on 2) contains the same complex case
+      and is not there in any other form: the file works with complex-linear
+      maps throughout. Statements 2-5 (the domain form and the
       three examples) were not found in that repository: on 2026-11-10, at
       the commit above, all of its files were searched by name and by
       content for the Jordan identity, the homomorphism-or-anti-homomorphism
@@ -407,7 +424,7 @@ related_formalizations:
 
 status:
   scope: >-
-    Formalized: five compared theorems, in comparator order, namespace
+    Formalized: six compared theorems, in comparator order, namespace
     JordanPrime (see the description for their content). Proved in the
     repository, not compared: the two-identity form of statement 1, still
     assuming no 2-torsion
@@ -419,9 +436,11 @@ status:
     with no hypothesis on 2 or on the target; the covering lemma
     (biadditive_cover); primeness of a matrix ring over a prime ring with
     identity (matrix_prime); and the corollary for Jordan homomorphisms onto
-    such a matrix ring (mul_or_antimul_onto_matrix). Not formalized: the
-    theorem in characteristic 2 (Smiley 1957, Added in proof, p. 429, with
-    the two-identity definition); semiprime targets (Baxter-Martindale 1979;
+    such a matrix ring (mul_or_antimul_onto_matrix); Smiley's lemma that a
+    prime ring in which every commutator squares to zero is commutative
+    (commutative_of_commutator_sq_zero, with the commutator as the library
+    definition ringComm); and omega * tau = 0 (defect_mul_defect_mirror).
+    Not formalized: semiprime targets (Baxter-Martindale 1979;
     Bresar 1989); the sum-of-a-homomorphism-and-an-antihomomorphism theorems
     for matrix rings and operator algebras (Jacobson-Rickart; Kadison); any
     statement about *-preserving maps.
@@ -456,7 +475,9 @@ automation:
         (two failed rewrites and one lemma-signature error, all repaired).
         After the adversarial review the dropped hypothesis was added as a
         clause to statements 3-5 and the account of the sources was
-        rewritten from the papers themselves.
+        rewritten from the papers themselves. Statement 6 was added last,
+        at the author's decision: its Lean proof was drafted by an AI agent
+        from a written plan of Smiley's argument and checked by lake build.
     - method: "manual"
       models: []
       framework: "n/a"
@@ -508,12 +529,20 @@ fidelity:
     4), the block-diagonal embedding added in statement 3, and a map F_2 x
     F_2 -> F_2 in place of an additive automorphism of a field of
     characteristic two (statement 5). (f) Statement 5's map preserves squares and does
-    not satisfy the triple identity of statement 2, so it says nothing
-    about the characteristic-2 theorem for the two-identity definition. (g)
+    not satisfy the triple identity of statement 2, so it is not a
+    counterexample to statement 6. (g)
     The three papers of 1950-1957 were read in text extractions of scanned
     PDFs (Internet Archive copies of the publisher's files); page numbers
     are the journal's. (h) The application paragraph is cited, not a
-    theorem; no compared statement asserts it.
+    theorem; no compared statement asserts it. (i) Statement 6 against
+    Smiley's "Added in proof" (1957, p. 429): Smiley replaces hypothesis
+    (1) by (1*), squares and aba, and keeps hypothesis (2), additivity and
+    the Jordan identity; statement 6 assumes additivity and (1*) only,
+    because the Jordan identity follows from the square identity. The zero
+    ring satisfies the primeness condition, and there statement 6 is
+    trivial. Statement 6 with the library lemmas map_sq_of_jordan and
+    map_triple_of_jordan implies statement 1; statement 1 is kept as the
+    classical form, with its own proof.
 
 review:
   status: "self-assessed"
@@ -529,9 +558,12 @@ review:
     examples, and found the prior formalization recorded above. An
     AI-assisted adversarial review (five lenses, each finding re-checked at
     source) was applied to the assembled package on 2026-11-10 and its
-    findings were applied. The author reviewed the five compared
-    statements against their informal descriptions on 2026-11-10. Not
-    peer-reviewed.
+    findings were applied. The author reviewed statements 1-5 against
+    their informal descriptions on 2026-11-10; they are unchanged since. A
+    third AI-assisted check, organised by the registry's published review
+    prompts, was applied to the public commit on 2026-11-10 and led to
+    corrections of text and metadata only. Statement 6 was added after
+    that and has not yet been reviewed by the author. Not peer-reviewed.
 
 alignment:
   namespace: "JordanPrime"
@@ -561,6 +593,11 @@ alignment:
       module: "Solution"
       status: "proved"
       note: "The hypothesis on 2 is needed: a Jordan homomorphism from F_2 x F_2 onto F_2 (prime, with 2-torsion) that is neither."
+    - source: "Smiley 1957, Added in proof (p. 429): the Theorem of p. 428 with (1*), squares and aba, in place of hypothesis (1) on 2"
+      lean: "JordanPrime.twoIdentity_onto_prime"
+      module: "Solution"
+      status: "proved"
+      note: "An additive map preserving squares and aba onto a prime ring is multiplicative or anti-multiplicative; no hypothesis on 2. The Jordan identity, which Smiley keeps as a hypothesis, is not assumed: it follows from the square identity."
 
 acknowledgements: >-
   Built on Mathlib and the Lean 4 toolchain; thanks to the leanprover

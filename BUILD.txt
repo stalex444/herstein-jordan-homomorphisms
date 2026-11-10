@@ -6,11 +6,11 @@ Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55
   .lake/packages: symlink to the built packages of that entry (same pin); not part of the repository
 
 Build: lake build (defaultTargets HersteinJordan, HersteinJordanExamples, Challenge, Solution) -> Build
-  completed successfully (8938 jobs), exit 0, 2026-11-10. Only warnings: the 5 'declaration uses sorry'
-  warnings of Challenge.lean (the compared placeholders, lines 101, 112, 120, 132, 145). No warning in
+  completed successfully (8938 jobs), exit 0, 2026-11-10. Only warnings: the 6 'declaration uses sorry'
+  warnings of Challenge.lean (the compared placeholders, lines 116, 127, 135, 147, 160, 172). No warning in
   HersteinJordan, HersteinJordanExamples or Solution.
   Token counts (whole-word grep, per file):
-    Challenge.lean               sorry=5 admit=0 native_decide=0 axiom=0
+    Challenge.lean               sorry=6 admit=0 native_decide=0 axiom=0
     Solution.lean                sorry=0 admit=0 native_decide=0 axiom=0
     HersteinJordan.lean          sorry=0 admit=0 native_decide=0 axiom=0
     HersteinJordanExamples.lean  sorry=0 admit=0 native_decide=0 axiom=0
@@ -24,24 +24,32 @@ Build: lake build (defaultTargets HersteinJordan, HersteinJordanExamples, Challe
   'JordanPrime.onto_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
   'JordanPrime.prime_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
   'JordanPrime.two_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'JordanPrime.twoIdentity_onto_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
   'HersteinJordan.mul_or_antimul_of_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
   'HersteinJordan.mul_or_antimul_of_prime_of_twoIdentity' depends on axioms: [propext, Classical.choice, Quot.sound]
   'HersteinJordan.mul_or_antimul_of_noZeroDivisors' depends on axioms: [propext, Classical.choice, Quot.sound]
   'HersteinJordan.defect_sandwich' depends on axioms: [propext]
   'HersteinJordan.matrix_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
   'HersteinJordan.mul_or_antimul_onto_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'HersteinJordan.mul_or_antimul_of_prime_of_twoIdentity_anyChar' depends on axioms: [propext,
+    Classical.choice, Quot.sound]
+  'HersteinJordan.commutative_of_commutator_sq_zero' depends on axioms: [propext]
+  'HersteinJordan.defect_eq_zero_of_sq_ne_zero' depends on axioms: [propext]
+  'HersteinJordan.defect_mul_defect_mirror' depends on axioms: [propext]
 
-Statement identity, Challenge vs Solution (5 theorems, no definitions)
-  Scripted comparison of the five docstring-plus-signature blocks: identical, in the same order, which
-    is the comparator order.
-  Count gate: the Challenge docstring says "compares exactly these five statements" and enumerates 1-5;
-    comparator.json has 5 theorem_names in that order; Challenge.lean has 5 theorem declarations.
+Statement identity, Challenge vs Solution (6 theorems, no definitions)
+  Scripted comparison of the six docstring-plus-signature blocks: identical, in the same order, which
+    is the comparator order. The blocks of statements 1-5 are byte-identical to those of the commit the
+    author reviewed (0e98865a); statement 6 is new.
+  Count gate: the Challenge docstring says "compares exactly these six statements" and enumerates 1-6;
+    comparator.json has 6 theorem_names in that order; Challenge.lean has 6 theorem declarations.
 
 Comparator
   lake comparator --inadvisably-no-sandbox (toolchain bin with nanoda_bin on PATH), from the package root,
     2026-11-10, after the last edit to Challenge.lean: "Exporting #[... JordanPrime.jordan_onto_prime,
     JordanPrime.twoIdentity_into_domain, JordanPrime.onto_needed, JordanPrime.prime_needed,
-    JordanPrime.two_needed, ...] from Challenge / Building Solution / Build completed successfully
+    JordanPrime.two_needed, JordanPrime.twoIdentity_onto_prime, ...] from Challenge / Building Solution /
+    Build completed successfully
     (8934 jobs) / Exporting #[the same list] from Solution / nanoda kernel accepts the solution / Lean
     default kernel accepts the solution / Your solution is okay!", exit 0.
   Not recorded here: the registry's own submission workflow. It is dispatched on the public commit by
@@ -67,23 +75,28 @@ Review history
   2026-11-10: a second, two-lens check of the rewritten text (page claims against the papers; consistency
     across the files) found no blocking defect; its wording corrections were applied, and the build, the
     axioms print, the comparator and the checks above were re-run after them.
-  2026-11-10: the author reviewed the five compared statements against their informal descriptions
-    (recorded in formalization.yaml, review.notes).
+  2026-11-10: the author reviewed the five statements then compared (statements 1-5) against their
+    informal descriptions (recorded in formalization.yaml, review.notes).
   2026-11-10: a third AI-assisted check on the public commit, organised by the registry's published
     review prompts (metadata, statement alignment, definitions, literature, proof account, rendering), each
     finding re-checked at source, found no defect in the Lean or in the compared statements. Its wording
     and metadata corrections were applied to README.md, formalization.yaml and this file only: source
     types and related-formalization links, a paragraph on the current literature with two background
     sources, and exact wording in the account of the examples and of where a 2 is cancelled. No Lean file
-    changed, so the build, axioms and comparator records above stand; the metadata checks were re-run.
+    changed in that step.
+  2026-11-10: statement 6 (Smiley's theorem in every characteristic) was added at the author's decision.
+    HersteinJordan.lean gained the section "Every characteristic: Smiley's argument" (additions only; no
+    existing declaration or proof changed) and three paragraphs of its module docstring; Challenge.lean
+    and Solution.lean gained statement 6 and the matching docstring changes. The build, the axioms print,
+    the comparator and the metadata checks recorded above are those re-run after this change.
 
 Files (sha256)
-  52417eb61a28c082887c0830240b7337be74499f2528edfc64b1a3b0eb57a4e1  Challenge.lean
-  fee8ae082703dab226c7f371282dbadc050fd86518115aff325aa8dc1e2e8f91  Solution.lean
-  36c21b0f146d74426fc1f5f06aaf852ce9b380f25e78cc973aa5b505c74e6ed1  HersteinJordan.lean
+  304e208b817cec9436615971a1692059f0ef7edc464ff07e438670326b772ba4  Challenge.lean
+  d97d35ddefc740276b180153f9ec97258296240c195205a1c68deb901a40f45d  Solution.lean
+  759327221de30d1276191c3dbdc5d34b75f75c88ab2a2a9b4341f7916a2603e2  HersteinJordan.lean
   e988d41b8636a1cae3089a155b408d4fcccd069960345931a6d636c81cad26ee  HersteinJordanExamples.lean
-  9bc479bb253e7413c30e64d790da854db4eddae63f86633d088391915da4b10c  Axioms.lean
-  12c7527a08e77afb7101ba39b2f795bdc1946ef3f2d9baa01e909a8052d86545  comparator.json
+  d1470e32d73276c26e64c625aa995807187eb05b5b43f72756e9bb630f342ba8  Axioms.lean
+  131a7c8add33fca3957872359ace40c8d6f189f0876a24109bda155e1608ea6d  comparator.json
   a86d9f7b0583becdff5013f878e0ef1e4c967ac2aae8a89d70ce477829495a70  lakefile.toml
   8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a  lean-toolchain
   a1020bad118f42769171ae01d0becc6c6808823e3cdf6163a7dfeb9955576fb9  lake-manifest.json
