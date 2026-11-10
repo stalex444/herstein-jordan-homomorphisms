@@ -24,8 +24,8 @@ transfer from the proof library (`HersteinJordan.lean`, `HersteinJordanExamples.
 * Statement 3: witness `HersteinJordan.blockTranspose`; the target is prime by
   `HersteinJordan.matrix_prime` over the integers; the map is not onto by statement 1.
 * Statement 4: witness `HersteinJordan.sndTranspose`; the target is not prime by statement 1.
-* Statement 5: witness `HersteinJordan.sumMod2`; every clause is decided by the kernel on the
-  four-element ring.
+* Statement 5: witness `HersteinJordan.sumMod2`; every clause is decided by `decide` on the
+  finite rings `𝔽₂ × 𝔽₂` and `𝔽₂`.
 -/
 
 namespace JordanPrime
@@ -71,7 +71,7 @@ theorem onto_needed :
     HersteinJordan.blockTranspose_not_mul, HersteinJordan.blockTranspose_not_antimul⟩
 
 /-- **4. Primeness is needed.** A Jordan homomorphism onto a ring that is not prime and has no
-2-torsion, and is neither multiplicative nor anti-multiplicative. -/
+2-torsion; the map is neither multiplicative nor anti-multiplicative. -/
 theorem prime_needed :
     ∃ φ : Matrix (Fin 2) (Fin 2) ℤ × Matrix (Fin 2) (Fin 2) ℤ →+
         Matrix (Fin 2) (Fin 2) ℤ × Matrix (Fin 2) (Fin 2) ℤ,

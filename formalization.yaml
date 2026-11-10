@@ -70,8 +70,8 @@ sources:
       Scoped to statement 1. Herstein defines a Jordan homomorphism as an
       additive map of rings with phi(ab + ba) = phi(a)phi(b) + phi(b)phi(a)
       (p. 331), calls R' "not of characteristic 2" when 2x' = 0 implies
-      x' = 0 (p. 332), defines a prime ring by "x'R'y' = (0) implies x' = 0
-      or y' = 0" (p. 334), and proves Theorem H (p. 340): a Jordan
+      x' = 0 (p. 332), defines a prime ring by "x'R'y' = (0) implies that
+      either x'=0 or y'=0" (p. 334), and proves Theorem H (p. 340): a Jordan
       homomorphism of a ring onto a prime ring of characteristic different
       from 2 and 3 is a homomorphism or an anti-homomorphism. Statement 1
       uses the same definitions and does not exclude characteristic 3
@@ -98,7 +98,7 @@ sources:
       satisfies (ab)' = a'b' for all a, b or (ab)' = b'a' for all a, b. No
       identity element and no scalars are assumed. The identity proved in
       the library as HersteinJordan.defect_sandwich is Smiley's (7), p. 427,
-      and tau * omega = 0 (defect_mul_defect) is also derived there. The
+      and tau * omega = 0 (defect_mul_defect) is derived on p. 426. The
       proof followed here after that identity is the one in
       Beidar-Bresar-Chebotar, not Smiley's, which uses a lemma on prime
       rings in which every commutator squares to zero. NOT formalized: the
@@ -129,7 +129,7 @@ sources:
       they cite Smiley's p. 427. Adapted here in two respects: additive maps
       of rings in place of module homomorphisms of algebras, and "no
       2-torsion in the target" in place of 1/2 in the scalars (the last step
-      cancels a 2 where the paper divides by 2). The authors remark that
+      cancels a 2 where the paper passes from x = -x to x = 0). The authors remark that
       their arguments also work in rings of characteristic not 2, and their
       algebras are not assumed to have an identity; no novelty is claimed
       for the ring-level form, which is the setting of Smiley's theorem.
@@ -199,9 +199,10 @@ sources:
       (A_1, A_2^T) of M_n(F) + M_n(F) onto itself, n >= 2, F a commutative
       field, as a map that is neither a homomorphism nor an
       anti-homomorphism; statement 4 is the 2x2 integer instance. Footnote
-      15 notes that over a commutative field of characteristic two the
-      identity of statement 1 holds trivially for additive maps; statement 5
-      is an instance of that degeneracy, F_2 x F_2 -> F_2, written out here.
+      15 notes that an additive automorphism of a commutative field of
+      characteristic two satisfies the identity of statement 1 trivially;
+      statement 5 is an instance of that degeneracy, F_2 x F_2 -> F_2,
+      written out here.
       Section 4.2 is the history used in this entry: Hua, Jacobson-Rickart,
       Herstein (characteristic greater than three), Yamaguti, Smiley
       (characteristic three, and characteristic two with the two-identity
@@ -362,8 +363,7 @@ status:
     the two-identity definition); semiprime targets (Baxter-Martindale 1979;
     Bresar 1989); the sum-of-a-homomorphism-and-an-antihomomorphism theorems
     for matrix rings and operator algebras (Jacobson-Rickart; Kadison); any
-    statement about *-preserving maps or about unitary and anti-unitary
-    symmetries.
+    statement about *-preserving maps.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound"]
@@ -379,8 +379,7 @@ automation:
         AI-assisted scope review of the plan before the build (which found
         the OpenAI formalization recorded under related_formalizations) and
         an AI-assisted adversarial review of the assembled package (which
-        found the Internet Archive copies of the three papers of 1950-1957,
-        after the publisher's site had refused automated access).
+        found the Internet Archive copies of the three papers of 1950-1957).
       cost:
         wall_time: "one session, 2026-11-10"
         spend_usd: "subscription-based"
@@ -490,7 +489,7 @@ alignment:
       module: "Solution"
       status: "proved"
       note: "Primeness is needed: a Jordan homomorphism onto pairs of 2x2 integer matrices (not prime, no 2-torsion) that is neither."
-    - source: "Standard observation: in characteristic 2 the identity holds trivially on commutative rings (Havlicek, arXiv:2004.00886v2, footnote 15); the instance F_2 x F_2 -> F_2 is written out here"
+    - source: "Standard observation: in characteristic 2 the identity holds trivially on commutative rings (Havlicek, arXiv:2004.00886v2, footnote 15, there for additive automorphisms of a commutative field); the instance F_2 x F_2 -> F_2 is written out here"
       lean: "JordanPrime.two_needed"
       module: "Solution"
       status: "proved"

@@ -69,13 +69,15 @@ and Rickart's identity (7)) follow from them; the absence of zero divisors gives
   superhomomorphisms*, Comm. Algebra 31 (2003), 633–644, Proposition 3.1 (after Brešar, J.
   Algebra 127 (1989)). They write for algebras over a ring containing `1/2` and remark that their
   arguments also work in rings of characteristic not 2; here the maps are additive maps of rings
-  and the last step cancels a 2 where they divide by 2. No novelty is claimed for the ring-level
+  and the last step cancels a 2 where they pass from `x = -x` to `x = 0`. No novelty is claimed for the ring-level
   form, which is the setting of Smiley's theorem.
 - **The proof of statement 2** is Jacobson and Rickart's.
 - **The examples.** `A ↦ (A, Aᵀ)` is in Brešar, *Jordan homomorphisms revisited*, Math. Proc.
   Cambridge Philos. Soc. 144 (2008), 317–328, §2; `(A₁, A₂) ↦ (A₁, A₂ᵀ)` is in Havlicek,
   arXiv:2004.00886v2, footnote 17; the degeneracy of the identity in characteristic 2 is in
-  Havlicek's footnote 15. Statements 3–5 are `2 × 2` integer and `𝔽₂` instances of these.
+  Havlicek's footnote 15. Statements 4 and 5 are `2 × 2` integer and `𝔽₂` instances of these;
+  statement 3 is the first map for `2 × 2` integer matrices, composed with the block-diagonal
+  embedding into the `4 × 4` matrices so that the target is prime.
 - **History.** Havlicek §4.2, for the sequence Hua, Jacobson–Rickart, Herstein, Yamaguti, Smiley,
   Baxter–Martindale, Brešar; Brešar (2008), introduction.
 
@@ -102,7 +104,7 @@ full, and records the relationship as "other", not "independent".
 
 Two separate Lean developments are adjacent.
 [`abderrahim-lectures/braided-sym-deriv`](https://github.com/abderrahim-lectures/braided-sym-deriv)
-formalizes Jordan *derivations* (Brešar 1988; Herstein 1957). The registry entry
+formalizes Jordan *derivations*. The registry entry
 PALOMAR-2026-10-28-000031 (Colbrook and Stepaniants, spectral isometries of C*-algebras) proves
 that certain maps are Jordan *isomorphisms* (square-preserving linear bijections) and that Jordan
 derivations of semiprime complex algebras are derivations. Neither proves that a Jordan
@@ -125,12 +127,12 @@ repositories were not searched. This is a dated search, not a claim of priority.
 - Semiprime targets (Baxter–Martindale 1979; Brešar 1989).
 - The theorems that write a Jordan homomorphism of a matrix ring or an operator algebra as a sum
   of a homomorphism and an anti-homomorphism (Jacobson–Rickart; Kadison).
-- Anything about `*`-preserving maps, or about unitary and anti-unitary symmetries.
+- Anything about `*`-preserving maps.
 
 ## Application (cited; no compared statement asserts it)
 
 The self-adjoint elements of an algebra of observables are closed under the symmetrized product
-and not, in general, under the product (the setting of Jordan, von Neumann and Wigner, 1934).
+and not, in general, under the product (Jordan, von Neumann and Wigner, 1934).
 Applied to the identity map, statement 1 says that on a prime ring without 2-torsion the
 symmetrized product determines the associative product up to reversing the order of the factors:
 an associative product with the same symmetrized product is the given product or its opposite.

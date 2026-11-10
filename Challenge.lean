@@ -82,7 +82,7 @@ found there (content search of its sources at commit 4eaee875, 2026-11-10).
 
 Application (cited; no compared statement asserts it). The self-adjoint elements of an algebra
 of observables are closed under the symmetrized product and not, in general, under the product
-(the setting of Jordan, von Neumann and Wigner, 1934). Applied to the identity map, statement 1
+(Jordan, von Neumann and Wigner, 1934). Applied to the identity map, statement 1
 says that on a prime ring without 2-torsion the symmetrized product determines the associative
 product up to reversing the order of the factors: an associative product with the same
 symmetrized product is the given product or its opposite. When the ring is not commutative
@@ -128,7 +128,7 @@ theorem onto_needed :
   sorry
 
 /-- **4. Primeness is needed.** A Jordan homomorphism onto a ring that is not prime and has no
-2-torsion, and is neither multiplicative nor anti-multiplicative. -/
+2-torsion; the map is neither multiplicative nor anti-multiplicative. -/
 theorem prime_needed :
     ∃ φ : Matrix (Fin 2) (Fin 2) ℤ × Matrix (Fin 2) (Fin 2) ℤ →+
         Matrix (Fin 2) (Fin 2) ℤ × Matrix (Fin 2) (Fin 2) ℤ,

@@ -108,7 +108,8 @@ def sndTranspose : Matrix (Fin 2) (Fin 2) ℤ × Matrix (Fin 2) (Fin 2) ℤ →+
   map_add' p q := by simp
 
 theorem sndTranspose_jordan (p q : Matrix (Fin 2) (Fin 2) ℤ × Matrix (Fin 2) (Fin 2) ℤ) :
-    sndTranspose (p * q + q * p) = sndTranspose p * sndTranspose q + sndTranspose q * sndTranspose p := by
+    sndTranspose (p * q + q * p) =
+      sndTranspose p * sndTranspose q + sndTranspose q * sndTranspose p := by
   ext1
   · simp [sndTranspose]
   · simp [sndTranspose, transpose_mul, add_comm]

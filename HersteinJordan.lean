@@ -14,7 +14,7 @@ typeclass is introduced.
 
 The statement is Smiley's theorem (Trans. Amer. Math. Soc. 84 (1957), p. 428). The proof follows
 the argument given in full by Beidar, Brešar and Chebotar (*Jordan superhomomorphisms*, Comm.
-Algebra 31 (2003), Proposition 3.1, after Brešar 1989 and Smiley 1957), there for algebras over a
+Algebra 31 (2003), Proposition 3.1, after Brešar 1989), there for algebras over a
 ring containing `1/2`, with the remark that it also works in rings of characteristic not 2; that
 ring-level argument is written out here. The domain form is Theorem 2 of Jacobson and Rickart
 (Trans. Amer. Math. Soc. 69 (1950), p. 482), proved as they prove it.
@@ -96,7 +96,7 @@ theorem defect_mul_defect (hsq : ∀ a, φ (a * a) = φ a * φ a)
     simp only [mul_sub, sub_mul, mul_assoc]; abel
   rw [e', h4, sub_self]
 
-/-- The key identity (Smiley 1957, as cited by Beidar–Brešar–Chebotar):
+/-- The key identity (Smiley 1957, identity (7), p. 427):
 `τ * φ r * ω + ω * φ r * τ = 0`. -/
 theorem defect_sandwich (hsq : ∀ a, φ (a * a) = φ a * φ a)
     (htri : ∀ a b, φ (a * b * a) = φ a * φ b * φ a) (a b r : R) :
