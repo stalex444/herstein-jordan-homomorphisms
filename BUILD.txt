@@ -41,7 +41,7 @@ Build: lake build (defaultTargets HersteinJordan, HersteinJordanExamples, Challe
 Statement identity, Challenge vs Solution (6 theorems, no definitions)
   Scripted comparison of the six docstring-plus-signature blocks: identical, in the same order, which
     is the comparator order. The blocks of statements 1-5 are byte-identical to those of the commit the
-    author reviewed (0e98865a); statement 6 is new.
+    author reviewed (0e98865a); statement 6 was added afterwards and reviewed by the author separately.
   Count gate: the Challenge docstring says "compares exactly these six statements" and enumerates 1-6;
     comparator.json has 6 theorem_names in that order; Challenge.lean has 6 theorem declarations.
 
@@ -99,6 +99,8 @@ Review history
     wording corrections in README.md, formalization.yaml, this file and the module docstring of
     HersteinJordan.lean. No statement and no proof changed. The build, the axioms print, the comparator
     and the metadata checks recorded above are those re-run after these corrections.
+  2026-11-10: the author reviewed statement 6 against its informal description (recorded in
+    formalization.yaml, review.notes).
 
 Files (sha256)
   9b6c3a5d6a2269e9bfb7e8d681cfb206de9b1af3eeee69a18299550464559ac4  Challenge.lean

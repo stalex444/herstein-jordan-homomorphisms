@@ -572,8 +572,8 @@ review:
     corrections of text and metadata only. Statement 6 was added after
     that; an AI-assisted check of the addition (four lenses, each finding
     re-checked at source) was applied on 2026-11-10 and its corrections
-    were made. Statement 6 has not yet been reviewed by the author. Not
-    peer-reviewed.
+    were made. The author reviewed statement 6 against its informal
+    description on 2026-11-10. Not peer-reviewed.
 
 alignment:
   namespace: "JordanPrime"
