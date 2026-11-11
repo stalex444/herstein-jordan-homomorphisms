@@ -117,11 +117,16 @@ sources:
       Smiley's: identity (7), the three alternatives (11)-(13), and the
       Lemma of section 3, a prime ring in which every commutator squares to
       zero is commutative (HersteinJordan.commutative_of_commutator_sq_zero,
-      proved following the paper). His linearized identities (8)-(10) are
-      replaced by applying (7) and tau * omega = 0 to sums of pairs and
-      subtracting. In alternative (13), where the paper says only that the
-      proof is complete, the Lean concludes with the theorem behind
-      statement 2.
+      proved following the paper). It departs from the paper's text as
+      follows. Identity (7) is derived by evaluating phi(ab r ba + ba r ab)
+      in two ways, as in Beidar-Bresar-Chebotar, not through Smiley's
+      identities (3)-(6); omega * tau = 0 (defect_mul_defect_mirror) is
+      computed directly, where the paper appeals to right-left duality; and
+      the linearized identities (8)-(10) are replaced by applying (7),
+      tau * omega = 0 and omega * tau = 0 to sums of pairs and subtracting.
+      In alternative (13) the paper concludes that R' is commutative and
+      free of zero divisors and says that this completes the proof; the
+      Lean finishes from there with the theorem behind statement 2.
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Jordan superhomomorphisms"
@@ -356,10 +361,11 @@ related_formalizations:
       map_triple_of_jordan, map_triple_lin and defect_sandwich are their
       ring-level counterparts. Statement 6 (the two-identity form onto a
       prime ring, with no hypothesis on 2) contains the same complex case
-      and is not there in any other form: the file works with complex-linear
-      maps throughout. Statements 2-5 (the domain form and the
+      and is not there in any other form: every theorem of the file about a
+      Jordan map takes a complex-linear map. Statements 2-5 (the domain form
+      and the
       three examples) were not found in that repository: on 2026-11-10, at
-      the commit above, all of its files were searched by name and by
+      the commit above, all of its Lean files were searched by name and by
       content for the Jordan identity, the homomorphism-or-anti-homomorphism
       conclusion, the definitions PreservesJordan and IsPrimeAlgebra, and
       the words Herstein, antimultiplicative and anti-homomorphism; the
@@ -438,8 +444,9 @@ status:
     identity (matrix_prime); and the corollary for Jordan homomorphisms onto
     such a matrix ring (mul_or_antimul_onto_matrix); Smiley's lemma that a
     prime ring in which every commutator squares to zero is commutative
-    (commutative_of_commutator_sq_zero, with the commutator as the library
-    definition ringComm); and omega * tau = 0 (defect_mul_defect_mirror).
+    (commutative_of_commutator_sq_zero, whose statement writes the
+    commutator out as x y - y x and whose proof uses the library definition
+    ringComm); and omega * tau = 0 (defect_mul_defect_mirror).
     Not formalized: semiprime targets (Baxter-Martindale 1979;
     Bresar 1989); the sum-of-a-homomorphism-and-an-antihomomorphism theorems
     for matrix rings and operator algebras (Jacobson-Rickart; Kadison); any
@@ -563,7 +570,10 @@ review:
     third AI-assisted check, organised by the registry's published review
     prompts, was applied to the public commit on 2026-11-10 and led to
     corrections of text and metadata only. Statement 6 was added after
-    that and has not yet been reviewed by the author. Not peer-reviewed.
+    that; an AI-assisted check of the addition (four lenses, each finding
+    re-checked at source) was applied on 2026-11-10 and its corrections
+    were made. Statement 6 has not yet been reviewed by the author. Not
+    peer-reviewed.
 
 alignment:
   namespace: "JordanPrime"

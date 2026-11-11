@@ -57,13 +57,16 @@ and Rickart's identity (7)) follow from them; the absence of zero divisors gives
 `ω = 0` for each pair; step 5 (their Lemma 1, which they attribute to Hua) finishes.
 
 For statement 6 (Smiley's argument) the identities `τ ω = 0`, `ω τ = 0` and the identity of step 3
-hold for every pair, with no hypothesis on 2. Suppose some `τ` has a nonzero square, say
+hold for every pair, with no hypothesis on 2; since `φ` is onto, the last reads
+`τ x ω + ω x τ = 0` for every `x` in the target, as in step 4. Suppose some `τ` has a nonzero
+square, say
 `T = τ(c, d)`. In a prime ring, an element `w` with `T w = 0` and `T x w + w x T = 0` for every
 `x` is zero, because then `T² x w = 0` for every `x`. Applying the identities to `(c, d)`, to
-sums of pairs such as `(c, d + x)` and `(c + y, d + x)`, and subtracting, shows that every `ω` is
+sums of pairs such as `(c, d + b)` and `(c + a, d + b)`, and subtracting, shows that every `ω` is
 such a `w`, so `φ` is anti-multiplicative; with `τ` and `ω` exchanged, `φ` is multiplicative.
 Otherwise every `τ` and every `ω` squares to zero, so every commutator
-`φ(a)φ(b) − φ(b)φ(a) = ω − τ` squares to zero. By Smiley's lemma a prime ring with that property
+`φ(a)φ(b) − φ(b)φ(a) = ω − τ` squares to zero; since `φ` is onto, these are all the commutators
+of the target. By Smiley's lemma a prime ring with that property
 is commutative; it then has no zero divisors, and the theorem behind statement 2 applies.
 
 ## Relation to the literature
@@ -92,9 +95,13 @@ is commutative; it then has no zero divisors, and the theorem behind statement 2
   differently.
 - **The proof of statement 6** is Smiley's: his identity (7), his three alternatives and the
   lemma of his §3 (a prime ring in which every commutator squares to zero is commutative), which
-  is proved in the library following his proof. His linearized identities (8)–(10) are replaced
-  by applications of (7) and `τ ω = 0` to sums of pairs. In the last alternative, where he writes
-  only that the proof is complete, the Lean uses the theorem behind statement 2.
+  is proved in the library following his proof. It departs from his text as follows. The
+  identity (7) is derived as in step 3 above (the computation of Beidar, Brešar and Chebotar),
+  not through his identities (3)–(6); `ω τ = 0` is computed directly, where he appeals to
+  right-left duality; and his linearized identities (8)–(10) are replaced by applications of
+  (7), `τ ω = 0` and `ω τ = 0` to sums of pairs. In the last alternative he concludes that the
+  target is commutative and free of zero divisors and writes that this completes the proof; the
+  Lean finishes from there with the theorem behind statement 2.
 - **The examples.** `A ↦ (A, Aᵀ)` is in Brešar, *Jordan homomorphisms revisited*, Math. Proc.
   Cambridge Philos. Soc. 144 (2008), 317–328, §2; `(A₁, A₂) ↦ (A₁, A₂ᵀ)` is in Havlicek,
   arXiv:2004.00886v2, footnote 17; the degeneracy of the identity in characteristic 2 is in
@@ -133,8 +140,9 @@ The case of complex-linear maps between unital complex algebras is formalized in
 additive maps in place of complex-linear ones, no identity element, and no 2-torsion in place of
 complex scalars; statement 6 has no hypothesis on 2 at all.
 That file also proves the complex-linear counterparts of the library lemmas for steps 1–3.
-Statements 2–5 were not found there, and nothing there treats additive maps of rings or
-characteristic 2 (all files searched by name and by content at commit 4eaee875, 2026-11-10).
+Statements 2–5 were not found there (its Lean sources searched by name and by content at commit
+4eaee875, 2026-11-10); the theorem named above is stated for complex-linear maps of complex
+algebras only.
 
 Contact with that file. The proof plan was written from the Beidar–Brešar–Chebotar argument
 before the file was found. An AI-assisted scope review then found the file, read all of it, and
@@ -154,7 +162,8 @@ that certain maps are Jordan *isomorphisms* (square-preserving linear bijections
 derivations of semiprime complex algebras are derivations. Neither proves that a Jordan
 homomorphism is a homomorphism or an anti-homomorphism.
 
-No formalization of statement 1 for additive maps of rings, or of statements 2–6, was found on
+No formalization of statement 1 or statement 6 for additive maps of rings, or of statements 2–5,
+was found on
 2026-11-10 in: Mathlib (sources at the pin and at master 21fc68be; issue and pull-request
 search); the Lean Zulip public channels; the Lean Reservoir package index; the Palomar registry
 (search API); TauCeti and Lean Pool (sources); the repositories named above (sources); the titles

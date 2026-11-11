@@ -92,8 +92,8 @@ Prior formalization. The case of complex-linear maps between unital complex alge
 formalized in `github.com/openai/math` (`lean/OAI/Analysis/KadisonKastler/Jordan.lean`, theorem
 `OAI.KadisonKastler.PreservesJordan.multiplicative_or_antimultiplicative`, first committed
 2026-10-06). Statements 1 and 6 contain that case and are not limited to it. None of statements
-2–5 was found there, and nothing there treats additive maps of rings or characteristic 2
-(content search of its sources at commit 4eaee875, 2026-11-10).
+2–5 was found there (content search of its sources at commit 4eaee875, 2026-11-10); the theorem
+named above is stated for complex-linear maps of complex algebras only.
 
 Application (cited; no compared statement asserts it). The self-adjoint elements of an algebra
 of observables are closed under the symmetrized product and not, in general, under the product

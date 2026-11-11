@@ -14,13 +14,14 @@ anti-multiplicative. Rings are not assumed to have an identity
 (`NonUnitalRing`), and every hypothesis on the target is a plain `∀`-statement, so no new
 typeclass is introduced.
 
-The statement is Smiley's theorem (Trans. Amer. Math. Soc. 84 (1957), p. 428). The proof follows
-the argument given in full by Beidar, Brešar and Chebotar (*Jordan superhomomorphisms*, Comm.
-Algebra 31 (2003), Proposition 3.1, after Brešar 1989), there for algebras over a
-ring containing `1/2`, with the remark that it also works in rings of characteristic not 2; that
-ring-level argument is written out here. The domain form is Theorem 2 of Jacobson and Rickart
-(Trans. Amer. Math. Soc. 69 (1950), p. 482), proved as they prove it, from their identity (7) and
-their Lemma 1; that lemma is proved here by the covering argument (`biadditive_cover`).
+The characteristic-not-two form is Smiley's theorem (Trans. Amer. Math. Soc. 84 (1957), p. 428).
+Its proof follows the argument given in full by Beidar, Brešar and Chebotar (*Jordan
+superhomomorphisms*, Comm. Algebra 31 (2003), Proposition 3.1, after Brešar 1989), there for
+algebras over a ring containing `1/2`, with the remark that it also works in rings of
+characteristic not 2; that ring-level argument is written out here. The domain form is Theorem 2
+of Jacobson and Rickart (Trans. Amer. Math. Soc. 69 (1950), p. 482), proved as they prove it,
+from their identity (7) and their Lemma 1; that lemma is proved here by the covering argument
+(`biadditive_cover`).
 
 The form in every characteristic is Smiley's remark (Added in proof, p. 429) that the two
 identities may replace the hypothesis on 2 in his theorem. Its proof here is Smiley's argument:

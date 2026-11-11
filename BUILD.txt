@@ -32,7 +32,8 @@ Build: lake build (defaultTargets HersteinJordan, HersteinJordanExamples, Challe
   'HersteinJordan.matrix_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
   'HersteinJordan.mul_or_antimul_onto_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
   'HersteinJordan.mul_or_antimul_of_prime_of_twoIdentity_anyChar' depends on axioms: [propext,
-    Classical.choice, Quot.sound]
+   Classical.choice,
+   Quot.sound]
   'HersteinJordan.commutative_of_commutator_sq_zero' depends on axioms: [propext]
   'HersteinJordan.defect_eq_zero_of_sq_ne_zero' depends on axioms: [propext]
   'HersteinJordan.defect_mul_defect_mirror' depends on axioms: [propext]
@@ -86,14 +87,23 @@ Review history
     changed in that step.
   2026-11-10: statement 6 (Smiley's theorem in every characteristic) was added at the author's decision.
     HersteinJordan.lean gained the section "Every characteristic: Smiley's argument" (additions only; no
-    existing declaration or proof changed) and three paragraphs of its module docstring; Challenge.lean
-    and Solution.lean gained statement 6 and the matching docstring changes. The build, the axioms print,
-    the comparator and the metadata checks recorded above are those re-run after this change.
+    existing declaration or proof changed); in its module docstring one sentence was added to the opening
+    paragraph, the paragraph on the sources was revised, and one paragraph and one Layout item were
+    added. Challenge.lean and Solution.lean gained statement 6 and the matching docstring changes;
+    Axioms.lean, comparator.json, README.md, formalization.yaml, SHA256SUMS and this file were updated to
+    match.
+  2026-11-10: an AI-assisted check of that addition (truth of each new sentence, the proof account
+    against the Lean and against Smiley's paper, counts and records, prior formalization), each finding
+    re-checked at source, found one false sentence, a claim about the whole of another repository where
+    only the cited theorem was meant; it was corrected in Challenge.lean and README.md, together with
+    wording corrections in README.md, formalization.yaml, this file and the module docstring of
+    HersteinJordan.lean. No statement and no proof changed. The build, the axioms print, the comparator
+    and the metadata checks recorded above are those re-run after these corrections.
 
 Files (sha256)
-  304e208b817cec9436615971a1692059f0ef7edc464ff07e438670326b772ba4  Challenge.lean
+  9b6c3a5d6a2269e9bfb7e8d681cfb206de9b1af3eeee69a18299550464559ac4  Challenge.lean
   d97d35ddefc740276b180153f9ec97258296240c195205a1c68deb901a40f45d  Solution.lean
-  759327221de30d1276191c3dbdc5d34b75f75c88ab2a2a9b4341f7916a2603e2  HersteinJordan.lean
+  39736bd7eb85e426a524f2298b577a3049c6e75ec1091ad4dfd82336bca65956  HersteinJordan.lean
   e988d41b8636a1cae3089a155b408d4fcccd069960345931a6d636c81cad26ee  HersteinJordanExamples.lean
   d1470e32d73276c26e64c625aa995807187eb05b5b43f72756e9bb630f342ba8  Axioms.lean
   131a7c8add33fca3957872359ace40c8d6f189f0876a24109bda155e1608ea6d  comparator.json
